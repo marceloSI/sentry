@@ -16,15 +16,7 @@ class Migration(SchemaMigration):
         # 'organization_id', 'external_id']
         db.delete_unique(u'sentry_identityprovider', ['type', 'organization_id', 'external_id'])
 
-        # Deleting field 'IdentityProvider.organization_id'
-        db.delete_column(u'sentry_identityprovider', 'organization_id')
-
     def backwards(self, orm):
-        # Adding field 'IdentityProvider.organization_id'
-        db.add_column(u'sentry_identityprovider', 'organization_id',
-                      self.gf('sentry.db.models.fields.bounded.BoundedPositiveIntegerField')(default=0),
-                      keep_default=False)
-
         # Adding unique constraint on 'IdentityProvider', fields ['type',
         # 'organization_id', 'external_id']
         db.create_unique(u'sentry_identityprovider', ['type', 'organization_id', 'external_id'])
