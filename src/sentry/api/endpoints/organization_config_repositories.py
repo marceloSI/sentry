@@ -29,7 +29,7 @@ class OrganizationConfigRepositoriesEndpoint(OrganizationEndpoint):
         if features.has('organizations:internal-catchall', organization, actor=request.user):
             for provider_id in integrations_provider_bindings:
 
-                if provider_id == 'bitbucket' and not features.has(
+                if provider_id == 'integrations:bitbucket' and not features.has(
                         'organizations:bitbucket-integration', organization, actor=request.user):
                     continue
 

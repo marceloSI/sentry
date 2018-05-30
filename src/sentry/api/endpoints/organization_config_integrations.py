@@ -21,6 +21,9 @@ class OrganizationConfigIntegrationsEndpoint(OrganizationEndpoint):
             metadata = metadata and metadata._asdict() or None
             if not has_catchall and provider.key in settings.SENTRY_INTERNAL_INTEGRATIONS:
                 continue
+            if provider.key == 'bitbucket' and not features.has(
+                    'organizations:bitbucket-integration', organization, actor=request.user):
+                continue
             providers.append(
                 {
                     'key': provider.key,
