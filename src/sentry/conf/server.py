@@ -764,6 +764,7 @@ SENTRY_FEATURES = {
     'organizations:dashboard': True,
     'organizations:suggested-commits': True,
     'organizations:relay': False,
+    'organizations:bitbucket-integration': False,
     'projects:global-events': False,
     'projects:plugins': True,
     'projects:dsym': False,
